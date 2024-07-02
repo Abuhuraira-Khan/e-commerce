@@ -25,9 +25,10 @@ const ProductViewPage = () => {
     size: '',
     color:''
   });
-console.log(quantity)
   const navigate = useNavigate();
 
+  
+useEffect(() => {
   async function getOneProduct() {
     try {
       const response = await fetch(`http://localhost:3030/product/${id}`);
@@ -46,6 +47,7 @@ console.log(quantity)
     }
   }
   getOneProduct();
+}, [])
 
   useEffect(() => {
     document.title = product.name || 'Product';
