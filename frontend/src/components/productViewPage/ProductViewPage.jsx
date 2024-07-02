@@ -47,7 +47,7 @@ useEffect(() => {
     }
   }
   getOneProduct();
-}, [id])
+}, [])
 
   useEffect(() => {
     document.title = product.name || 'Product';
