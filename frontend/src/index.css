@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --first-color: #dadada;
+  --second-color: #6e64ff;
+  --third-color:#eff6ff ;
+  --text-color: #ffffff;
+  --text2-color: #14b8a6;
+  --text3-color:#4b5563;
+  --four-color:#ef4444;
+}
+
+body{
+  background-color: var(--first-color);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  
+}
