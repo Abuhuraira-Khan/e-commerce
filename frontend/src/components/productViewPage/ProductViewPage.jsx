@@ -28,24 +28,26 @@ const ProductViewPage = () => {
 console.log(quantity)
   const navigate = useNavigate();
 
-    async function getOneProduct() {
-      try {
-        const response = await fetch(`https://e-commerce-server-bwda.onrender.com/product/${id}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch product');
-        }
-        const data = await response.json();
-        setProduct(data);
-        setImage(data.gallery);
-        setReview(data.reviews);
-        setColor(data.color);
-        setSize(data.size);
-        setSelectedImage(data.gallery[0]);
-      } catch (error) {
-        console.error('Error fetching product:', error);
+useEffect(() => {
+  async function getOneProduct() {
+    try {
+      const response = await fetch(`http://localhost:3030/product/${id}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch product');
       }
+      const data = await response.json();
+      setProduct(data);
+      setImage(data.gallery);
+      setReview(data.reviews);
+      setColor(data.color);
+      setSize(data.size);
+      setSelectedImage(data.gallery[0]);
+    } catch (error) {
+      console.error('Error fetching product:', error);
     }
-    getOneProduct();
+  }
+  getOneProduct();
+}, [id])
 
   useEffect(() => {
     document.title = product.name || 'Product';
