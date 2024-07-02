@@ -28,7 +28,6 @@ const ProductViewPage = () => {
   const navigate = useNavigate();
 
   
-useEffect(() => {
   async function getOneProduct() {
     try {
       const response = await fetch(`http://localhost:3030/product/${id}`);
@@ -47,7 +46,6 @@ useEffect(() => {
     }
   }
   getOneProduct();
-}, [])
 
   useEffect(() => {
     document.title = product.name || 'Product';
