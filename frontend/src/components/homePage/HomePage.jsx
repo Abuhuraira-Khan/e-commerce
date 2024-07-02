@@ -33,7 +33,7 @@ const HomePage = () => {
   // new arrival
   const [newArrival,setNewArrival] = useState([]);
   const getNewArrival = async ()=>{
-    const response = await fetch(`http://localhost:3030/api`);
+    const response = await fetch(`https://e-commerce-server-bwda.onrender.com/api`);
     const data = await response.json();
     const let10 = data.slice(0,10)
     setNewArrival(let10);

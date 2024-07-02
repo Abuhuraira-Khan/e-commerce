@@ -30,7 +30,7 @@ console.log(quantity)
 
     async function getOneProduct() {
       try {
-        const response = await fetch(`http://localhost:3030/product/${id}`);
+        const response = await fetch(`https://e-commerce-server-bwda.onrender.com/product/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch product');
         }
@@ -53,7 +53,7 @@ console.log(quantity)
 
   const handleCartBtn = async () => {
     try {
-      const res = await fetch(`http://localhost:3030/cart/${authUser._id}`, {
+      const res = await fetch(`https://e-commerce-server-bwda.onrender.com/cart/${authUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -41,7 +41,7 @@ const ProfilePage = () => {
     const getDetailsUser = async () => {
       try {
         if(authUser.userName === userName){
-          const response = await fetch(`http://localhost:3030/user/${authUser.userName}`);
+          const response = await fetch(`https://e-commerce-server-bwda.onrender.com/user/${authUser.userName}`);
           const data = await response.json();
           setUserProfile(data);
           setUserDetails(data.personal_info)
@@ -127,7 +127,7 @@ const AccountDetails = ({ editMode, setEditMode, userDetails }) => {
     setEditMode(!editMode);
     if(editMode){
       try {
-        const response = await fetch(`http://localhost:3030/user/${authUser._id}/edit`,{
+        const response = await fetch(`https://e-commerce-server-bwda.onrender.com/user/${authUser._id}/edit`,{
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -305,7 +305,7 @@ const Addresses = ({addressDetails}) => {
 
   // add new address
   const handleAddNewAddress = async () => {
-    const response = await fetch(`http://localhost:3030/setUserAddress/${authUser._id}`,{
+    const response = await fetch(`https://e-commerce-server-bwda.onrender.com/setUserAddress/${authUser._id}`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -326,7 +326,7 @@ const Addresses = ({addressDetails}) => {
 
   //delet address
   const removeAddress = async (pId) =>{
-    const response = await fetch(`http://localhost:3030/removeUserAddress/${authUser._id}`,{
+    const response = await fetch(`https://e-commerce-server-bwda.onrender.com/removeUserAddress/${authUser._id}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -573,7 +573,7 @@ const PaymentMethods = ({paymentDetails}) => {
   const [authUser,setAuthUser] = useAuth();
 
   const handleAddNewMethod = async () =>{
-    const res = await fetch(`http://localhost:3030/setUserPayMethod/${authUser._id}`,{
+    const res = await fetch(`https://e-commerce-server-bwda.onrender.com/setUserPayMethod/${authUser._id}`,{
       method:"POST",
       headers: {
         "Content-Type": "application/json"
@@ -592,7 +592,7 @@ const PaymentMethods = ({paymentDetails}) => {
 
   // remove method
   const handleRemove = async (mId) => {
-    const res = await fetch(`http://localhost:3030/removePayMethod/${authUser._id}`,{
+    const res = await fetch(`https://e-commerce-server-bwda.onrender.com/removePayMethod/${authUser._id}`,{
       method:"PUT",
       headers: {
         "Content-Type": "application/json"

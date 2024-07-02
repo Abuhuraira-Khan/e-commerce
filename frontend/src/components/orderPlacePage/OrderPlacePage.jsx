@@ -13,7 +13,7 @@ const OrderPlacePage = () => {
 
   // get address
   const getUserSetAdress = async () => {
-    const res = await fetch(`http://localhost:3030/user/order/address/${authUser._id}`)
+    const res = await fetch(`https://e-commerce-server-bwda.onrender.com/user/order/address/${authUser._id}`)
     const data = await res.json();
     setAddressList(data.addresses)
     setPaymentList(data.payment_methods)
@@ -75,7 +75,7 @@ const OrderPlacePage = () => {
       status:"pending"
       }
 
-    const res = await fetch(`http://localhost:3030/order/user/${authUser._id}`,{
+    const res = await fetch(`https://e-commerce-server-bwda.onrender.com/order/user/${authUser._id}`,{
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

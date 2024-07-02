@@ -11,7 +11,6 @@ import CartPage from "./components/cartPage/CartPage";
 import LoginPage from "./components/loginPage/LoginPage";
 import ProfilePage from "./components/profilePage/ProfilePage";
 import SearchProducts from "./components/searchProducts/SearchProducts";
-import ProductUploadPage from "./admin/productUpload/ProductUpload";
 import ProtectedRoute from "./ProtectedRoute ";
 import Preloader from "./Preloader";
 
@@ -58,14 +57,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProfilePage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/product-upload"
-            element={
-              <ProtectedRoute>
-                <ProductUploadPage />
               </ProtectedRoute>
             }
           />

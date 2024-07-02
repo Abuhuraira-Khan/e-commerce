@@ -16,7 +16,7 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3030/user/signUp", {
+      const response = await fetch("https://e-commerce-server-bwda.onrender.com/user/signUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const LoginPage = () => {
   const lPasswordRef = useRef(null)
   const handleLogin = async ()=>{
 
-   const response = await fetch("http://localhost:3030/user/login",{
+   const response = await fetch("https://e-commerce-server-bwda.onrender.com/user/login",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -11,7 +11,7 @@ const SearchProducts = () => {
 
 useEffect(() => {
   async function getSearchProduct(){
-    const response = await fetch(`http://localhost:3030/products/${search}`);
+    const response = await fetch(`https://e-commerce-server-bwda.onrender.com/products/${search}`);
     const data = await response.json();
     console.log(data)
     setProductList(data);

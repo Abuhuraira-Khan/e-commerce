@@ -33,7 +33,7 @@ const Navbar = () => {
 useEffect(() => {
   async function getCart() {
     try {
-      const res = await fetch(`http://localhost:3030/getCartAmount/${authUser._id}`);
+      const res = await fetch(`https://e-commerce-server-bwda.onrender.com/getCartAmount/${authUser._id}`);
       const data = await res.json();
       const totalQuantity = data.cart.reduce((acc, item) => acc + item.quantity, 0);  // Sum quantities
       setCartAmount(totalQuantity);

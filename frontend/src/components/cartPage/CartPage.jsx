@@ -11,7 +11,7 @@ const CartPage = () => {
   async function getCartProducts(){
     try {
 
-      const res = await fetch(`http://localhost:3030/cart/${authUser._id}`);
+      const res = await fetch(`https://e-commerce-server-bwda.onrender.com/cart/${authUser._id}`);
 
       const result = await res.json();
       setCartList(result.cart)
@@ -27,7 +27,7 @@ const CartPage = () => {
   };
 
   const handleRemoveCart = async (pId) =>{
-    const response = await fetch(`http://localhost:3030/removeCart/${authUser._id}`,{
+    const response = await fetch(`https://e-commerce-server-bwda.onrender.com/removeCart/${authUser._id}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
