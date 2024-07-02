@@ -41,100 +41,11 @@ export async function signUpUser(req, res) {
               phone_num: "",
               profile_pic:""
             },
-            addresses: [
-              {
-                _id: new ObjectId(),
-                type: "",
-                street: "",
-                city: "",
-                state: "",
-                zip: "",
-                country: "",
-                full_address:"",
-                is_default: true
-              },
-              {
-                _id: new ObjectId(),
-                type: "",
-                street: "",
-                city: "",
-                state: "",
-                zip: "",
-                country: "",
-                full_address:"",
-                is_default: false
-              }
-            ],
-            orders: [
-              {
-                _id: new ObjectId(),
-                order_date: new Date(""),
-                status:["processing","out of delivery","delivered",],
-                items: [
-                  {
-                    _id: new ObjectId(),
-                    name: "Product 1",
-                    image:"",
-                    quantity: 2,
-                    price: 19.99,
-                    product_id:"",
-                  },
-                  {
-                    _id: new ObjectId(),
-                    name: "Product 2",
-                    image:"",
-                    quantity: 1,
-                    price: 99.99,
-                    product_id:"",
-                  }
-                ],
-                total_amount: 139.97,
-                shipping_address: {
-                  _id: new ObjectId(),
-                  street: "456 Elm St",
-                  city: "Gotham",
-                  state: "NY",
-                  zip: "54321",
-                  country: "USA",
-                  full_address:""
-                }
-              }
-            ],
-            wishlist: [
-              {
-                _id: new ObjectId(),
-                name: "Product 3",
-                image:"",
-                added_date: new Date("2024-05-20")
-              }
-            ],
-            cart: [
-              {
-                _id: new ObjectId(),
-                name: "Product 4",
-                image:"",
-                quantity: 1,
-                price: 49.99,
-                product_id:"",
-              }
-            ],
-            payment_methods: [
-              {
-                _id: new ObjectId(),
-                type: "",
-                card_number: "",
-                expiration_date: "2025-12",
-                billing_address: {
-                  address_id: new ObjectId(),
-                  street: "123 Main St",
-                  city: "Metropolis",
-                  state: "NY",
-                  zip: "12345",
-                  country: "USA",
-                  full_address:""
-                }
-              }
-            ],
+            addresses: [],
+            orders: [],
+            wishlist: [],
+            cart: [],
+            payment_methods: [],
             created_at: new Date("2023-01-01T00:00:00Z"),
             updated_at: new Date("2024-06-24T12:34:56Z")
           };
