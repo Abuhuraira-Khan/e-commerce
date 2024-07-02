@@ -587,8 +587,11 @@ const PaymentMethods = ({paymentDetails}) => {
 
     if(!res.ok){
       alert(data.message)
-    } else{
+    }  else{
         alert(data.message)
+        setPaymentMethods((prevAddresses) =>[...prevAddresses,paymentMethods]);
+        setActiveMethod('')
+        paymentInputRef.current.classList.add("hidden")
     }
   }
 
