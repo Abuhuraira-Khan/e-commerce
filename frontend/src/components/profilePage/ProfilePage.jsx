@@ -60,6 +60,8 @@ const ProfilePage = () => {
   // sign out
   const handleSignOut = ()=>{
     localStorage.removeItem('User')
+    alert("user signed out")
+    setAuthUser(null)
   }
 
   return (
