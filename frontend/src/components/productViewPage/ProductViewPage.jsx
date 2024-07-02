@@ -117,7 +117,7 @@ console.log(quantity)
           <img
             src={selectedImage}
             alt={selectedImage}
-            className="w-full h-96 object-cover rounded-lg shadow-lg"
+            className="w-full h-96 rounded-lg shadow-lg"
           />
           <div className="flex mt-4 space-x-1 overflow-x-auto">
             {image.map((i, idx) => (
