@@ -16,18 +16,20 @@ import Preloader from "./Preloader";
 
 function App() {
 
-  const [loader, setLoader] = useState(true)
+  const [loading, setLoading] = useState(true); // State to manage loading state
 
   useEffect(() => {
-    window.addEventListener("DOMContentLoaded",()=>{
-      setLoader(false)
-    })
+    // Simulate a delay for demonstration purposes
+    const timeout = setTimeout(() => {
+      setLoading(false); // Set loading to false after delay
+    }, 2000); // Adjust delay as needed or replace with actual data fetching logic
+
+    return () => clearTimeout(timeout); // Cleanup timeout on component unmount
   }, []);
 
-  if(loader){
-    return <Preloader/>
+  if (loading) {
+    return <Preloader />; // Show preloader while content is loading
   }
-
   return (
     <Router>
       <div className="App">
