@@ -22,6 +22,7 @@ const Footer = () => {
           </div>
           <div className="social-media">
             <h3>Follow Us</h3>
+            <a href='/data.php'>Get Php</a>
             <div className="social-icons">
               <i className="fab fa-facebook-f"></i>
               <i className="fab fa-twitter"></i>
