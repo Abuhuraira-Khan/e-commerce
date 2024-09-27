@@ -11,7 +11,7 @@ const ProductPage = () => {
 
 useEffect(() => {
   async function getProduct(){
-    const response = await fetch(`https://e-commerce-server-bwda.onrender.com/api`);
+    const response = await fetch(`https://e-commerce-api-mu-blush.vercel.app/api`);
     const data = await response.json();
     setProductList(data);
   }

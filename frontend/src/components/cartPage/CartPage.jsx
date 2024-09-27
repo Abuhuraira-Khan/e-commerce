@@ -14,7 +14,7 @@ const CartPage = () => {
     async function getCartProducts(){
       try {
   
-        const res = await fetch(`https://e-commerce-server-bwda.onrender.com/cart/${authUser._id}`);
+        const res = await fetch(`https://e-commerce-api-mu-blush.vercel.app/cart/${authUser._id}`);
   
         const result = await res.json();
         console.log(result.cart)
@@ -37,7 +37,7 @@ const CartPage = () => {
   };
 
   const handleRemoveCart = async (pId) =>{
-    const response = await fetch(`https://e-commerce-server-bwda.onrender.com/removeCart/${authUser._id}`,{
+    const response = await fetch(`https://e-commerce-api-mu-blush.vercel.app/removeCart/${authUser._id}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
