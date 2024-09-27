@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthProvider';
 import { useParams } from 'react-router-dom';
 import { MdArrowDropDown } from "react-icons/md";
+import { CartContext } from '../../context/CartContext';
 
 const ProductViewPage = () => {
+  const { cartList, setCartList } = useContext(CartContext);
   const { id } = useParams();
   const [selectedImage, setSelectedImage] = useState('');
   const [authUser] = useAuth(); // Assuming useAuth returns [authUser, setAuthUser]
@@ -68,9 +70,7 @@ const ProductViewPage = () => {
         }),
       });
       if (res.ok) {
-        const responseData = await res.json();
-        console.log('Added to cart:', responseData);
-        // Optionally update state or show feedback to user
+        setCartList(parseInt(cartList)+parseInt(quantity));
       } else {
         throw new Error('Failed to add to cart');
       }

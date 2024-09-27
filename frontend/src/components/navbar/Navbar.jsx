@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { BsCart4 } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useAuth } from "../../context/AuthProvider";
+import {CartContext} from "../../context/CartContext";
 
 const Navbar = () => {
   const [authUser, setAuthUser] = useAuth();
-  const [cartAmount, setCartAmount] = useState(0);  // Initialize as a number
+  const { cartList, setCartList } = useContext(CartContext);
 
   const search = useParams();
   const sideRef = useRef(null);
@@ -36,14 +37,14 @@ useEffect(() => {
       const res = await fetch(`https://e-commerce-server-bwda.onrender.com/getCartAmount/${authUser._id}`);
       const data = await res.json();
       const totalQuantity = data.cart.reduce((acc, item) => acc + item.quantity, 0);  // Sum quantities
-      setCartAmount(totalQuantity);
+      setCartList(totalQuantity);
     } catch (error) {
       console.log(error)
     }
   };
   getCart();
-}, [cartAmount])
-
+}, [authUser._id, setCartList]);
+console.log(cartList)
 // handleSearch
 const handleSearch = (e) => {
   e.preventDefault();
@@ -52,7 +53,7 @@ const handleSearch = (e) => {
   }
 }
 
-  return (
+return (
     <div className="capitalize sticky top-0 z-50">
       <header className="navbar relative w-full bg-third-color h-14 p-2 grid grid-cols-4 items-center gap-0">
         <div className="logo w-full h-full">
@@ -84,7 +85,7 @@ const handleSearch = (e) => {
             <Link to="/cart">
               <span className="relative duration-300 flex items-center gap-2 lg:p-0 lg:bg-transparent lg:hover:right-0 bg-second-color hover:right-10 p-1 rounded-lg">
                 <span className="w-5 h-5 absolute lg:bottom-4 lg:left-4 bottom-5 left-5 bg-red-500 lg:bg-second-color text-third-color p-1 text-sm flex justify-center items-center rounded-full outline outline-2 outline-second-color lg:outline-third-color">
-                  {cartAmount}
+                  {cartList}
                 </span>
                 <BsCart4 size={30} />
                 <span>cart</span>
@@ -93,7 +94,7 @@ const handleSearch = (e) => {
             <Link to={authUser ? `/profile/${authUser.userName}` : "/login"}>
               <span className=" relative duration-300 flex gap-2 items-center lg:hover:right-0 lg:p-0 lg:bg-transparent bg-second-color hover:right-10 p-1  rounded-lg ">
                 <FaRegUser size={30} />
-                <span className="normal-case">{authUser ? authUser.userName : "login"}</span>
+                <span className="normal-case">{authUser?.userName ? authUser?.userName : "login"}</span>
               </span>
             </Link>
           </div>

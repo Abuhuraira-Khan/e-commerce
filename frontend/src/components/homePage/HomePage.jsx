@@ -12,7 +12,7 @@ const HomePage = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -59,27 +59,27 @@ const HomePage = () => {
       </section>
 
       <section className="featured-products py-12 px-5">
-        <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
+        <h2 className="text-2xl font-semibold">Featured Products</h2>
         <Slider {...sliderSettings} className="product-slider overflow-hidden">
           <div className="product-item p-4">
-            <img src="/assets/Images/i-1.jpeg" alt="Product Name" className="w-full h-64 object-cover mb-4 rounded-lg" />
-            <h3 className="text-lg font-medium">Product Name</h3>
-            <p className="text-gray-600">$99.99</p>
+            <img src="https://as2.ftcdn.net/v2/jpg/03/51/09/29/1000_F_351092935_pOu0iS396drNWuY3P35h2Nz0A1KpiJkN.jpg" alt="Product Name" className="w-full h-[80vh] object-cover mb-4 rounded-lg" />
+            {/* <h3 className="text-lg font-medium">Product Name</h3> */}
+            {/* <p className="text-gray-600">$99.99</p> */}
           </div>
           <div className="product-item p-4">
-            <img src="/assets/Images/i-2.jpeg" alt="Product Name" className="w-full h-64 object-cover mb-4 rounded-lg" />
-            <h3 className="text-lg font-medium">Product Name</h3>
-            <p className="text-gray-600">$99.99</p>
+            <img src="https://media.self.com/photos/599c997a774b667d3bbe1214/16:9/w_1279,h_719,c_limit/groceries-family-month.jpg" alt="Product Name" className="w-full h-[80vh] object-cover mb-4 rounded-lg" />
+            {/* <h3 className="text-lg font-medium">Product Name</h3> */}
+            {/* <p className="text-gray-600">$99.99</p> */}
           </div>
           <div className="product-item p-4">
-            <img src="/assets/Images/i-4.jpeg" alt="Product Name" className="w-full h-64 object-cover mb-4 rounded-lg" />
-            <h3 className="text-lg font-medium">Product Name</h3>
-            <p className="text-gray-600">$99.99</p>
+            <img src="https://assets.bonappetit.com/photos/661d8c2492dc9b02590b71f5/16:9/w_2912,h_1638,c_limit/20240227-ANJU-1193_annotated.jpg" alt="Product Name" className="w-full h-[80vh] object-cover mb-4 rounded-lg" />
+            {/* <h3 className="text-lg font-medium">Product Name</h3> */}
+            {/* <p className="text-gray-600">$99.99</p> */}
           </div>
           <div className="product-item p-4">
-            <img src="/assets/Images/i-6.jpeg" alt="Product Name" className="w-full h-64 object-cover mb-4 rounded-lg" />
-            <h3 className="text-lg font-medium">Product Name</h3>
-            <p className="text-gray-600">$99.99</p>
+            <img src="https://images.othoba.com/images/thumbs/0670405_elegant-doll-set-widow-box-toys-barbie.jpeg" alt="Product Name" className="w-full h-[80vh] object-cover mb-4 rounded-lg" />
+            {/* <h3 className="text-lg font-medium">Product Name</h3> */}
+            {/* <p className="text-gray-600">$99.99</p> */}
           </div>
           {/* Repeat for other products */}
         </Slider>
@@ -88,7 +88,7 @@ const HomePage = () => {
      {/* new arrivals */}
       <section className="new-arrivals py-12 px-5">
         <h2 className="text-2xl font-semibold mb-6">New Arrivals</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {newArrival.map((product,index)=>{
             return(
               <Link key={index} to={`/product/${product._id}`}>

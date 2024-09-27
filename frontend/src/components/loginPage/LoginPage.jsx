@@ -1,7 +1,11 @@
 import React, { useRef } from 'react';
+import { useAuth } from '../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 
+  const navigate = useNavigate();
+  const [authUser, setAuthUser] = useAuth();
   // signUp code
 
   const sUserNameRef = useRef(null);
@@ -29,17 +33,15 @@ const LoginPage = () => {
       });
 
       const result = await response.json();
-      console.log(result)
-      console.log(response.data)
 
       if (response.ok) {
         alert("User created successfully");
         sUserNameRef.current.value = "";
         sEmailRef.current.value = "";
         sPasswordRef.current.value = "";
-
+        setAuthUser(result.data)
         localStorage.setItem("User", JSON.stringify(result.data))
-        history.back()
+        navigate(-1)
 
       } else {
         alert(`User creation failed: ${result.message}`);
@@ -69,8 +71,9 @@ const LoginPage = () => {
       const data = await response.json();
         if(response.ok){
           alert(`logged in successfully ${data.message}`)
+          setAuthUser(data.user)
           localStorage.setItem("User", JSON.stringify(data.user))
-          history.back()
+          navigate(-1)
 
         }
         else{

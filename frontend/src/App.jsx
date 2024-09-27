@@ -13,10 +13,12 @@ import ProfilePage from "./components/profilePage/ProfilePage";
 import SearchProducts from "./components/searchProducts/SearchProducts";
 import ProtectedRoute from "./ProtectedRoute ";
 import Preloader from "./Preloader";
+import {CartContext} from "./context/CartContext";
 
 function App() {
 
   const [loading, setLoading] = useState(true); // State to manage loading state
+  const [cartList, setCartList] = useState();
 
   useEffect(() => {
     // Simulate a delay for demonstration purposes
@@ -31,6 +33,7 @@ function App() {
     return <Preloader />; // Show preloader while content is loading
   }
   return (
+    <CartContext.Provider value={{cartList, setCartList}}>
     <Router>
       <div className="App">
         <Navbar />
@@ -63,6 +66,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </CartContext.Provider>
   );
 }
 

@@ -33,7 +33,12 @@ const client = new MongoClient(mongoUrl);
 
 const __dirname = fileURLToPath(import.meta.url);
 
-app.use(cors());
+app.use(cors(
+  // {
+  //   origin: "https://e-commerce-8tlx.onrender.com",
+  //   credentials: true,
+  // }
+));
 app.use(express.json({ limit: "20mb" }));
 
 let db;

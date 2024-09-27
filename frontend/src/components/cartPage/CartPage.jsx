@@ -1,26 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { useAuth } from '../../context/AuthProvider';
-import { Link} from "react-router-dom"
+import { Link} from "react-router-dom";
+import {CartContext} from "../../context/CartContext";
 
 const CartPage = () => {
 
+  const { cartList:quantity, setCartList:setQuantity } = useContext(CartContext);
   const [cartList, setCartList] = useState([])
-  const [quantity, setQuantity] = useState(0)
   const [authUser,setAuthUser] =useAuth();
 
-  async function getCartProducts(){
-    try {
-
-      const res = await fetch(`https://e-commerce-server-bwda.onrender.com/cart/${authUser._id}`);
-
-      const result = await res.json();
-      setCartList(result.cart)
-    } catch (error) {
-      console.log(error)
+  useEffect(() => {
+    
+    async function getCartProducts(){
+      try {
+  
+        const res = await fetch(`https://e-commerce-server-bwda.onrender.com/cart/${authUser._id}`);
+  
+        const result = await res.json();
+        console.log(result.cart)
+        setCartList(result.cart)
+      } catch (error) {
+        console.log(error)
+      }
     }
-  }
+  
+    getCartProducts();
+    return () => {
+      setCartList([]);
+    }
+  }, [])
+  
 
-  getCartProducts();
   
   const getTotalPrice = () => {
     return cartList.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -33,7 +43,11 @@ const CartPage = () => {
         'Content-Type': 'application/json',
         },
         body: JSON.stringify({pId})
-    })
+    });
+    if(response.ok){
+      setCartList(cartList.filter(cart => cart._id !== pId));
+      setQuantity(parseInt(quantity) - 1);
+    }
   }
 
   return (
