@@ -36,7 +36,7 @@ const CartPage = () => {
     return cartList.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-  const handleRemoveCart = async (pId) =>{
+  const handleRemoveCart = async (pId,ProductQuantity) =>{
     const response = await fetch(`https://e-commerce-api-mu-blush.vercel.app/removeCart/${authUser._id}`,{
       method: 'PUT',
       headers: {
@@ -46,7 +46,7 @@ const CartPage = () => {
     });
     if(response.ok){
       setCartList(cartList.filter(cart => cart._id !== pId));
-      setQuantity(parseInt(quantity) - 1);
+      setQuantity(parseInt(quantity) - parseInt(ProductQuantity));
     }
   }
 
@@ -73,7 +73,7 @@ const CartPage = () => {
               </div>
             </div>
             <div className="ml-4">
-              <button onClick={()=>handleRemoveCart(item._id)} className="px-3 py-1 bg-red-500 text-white rounded-lg">Remove</button>
+              <button onClick={()=>handleRemoveCart(item._id,item.quantity)} className="px-3 py-1 bg-red-500 text-white rounded-lg">Remove</button>
             </div>
           </div>
         ))}
